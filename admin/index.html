@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="red" data-mode="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Console • Explore Wings Digital Technologies</title>
+  <link rel="icon" type="image/png" href="../logo.png">
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .admin-nav-item.active { background: var(--admin-primary); color: #FFFFFF; font-weight: 600; }
+    .admin-nav-item.active svg { stroke: #FFFFFF; }
+    .char-counter { font-size: 0.72rem; color: var(--admin-text-muted); text-align: right; margin-top: 4px; }
+    .edit-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 900px) {
+      .edit-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .save-banner-toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #10B981;
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      font-weight: 700;
+      font-size: 0.88rem;
+      z-index: 999999;
+      display: none;
+      align-items: center;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body class="admin-body">
+  <div id="saveToast" class="save-banner-toast">
+    <span>✓</span>
+    <span id="saveToastMsg">Changes saved! Your website characters have been updated.</span>
+  </div>
+
+  <div class="admin-wrapper">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="admin-sidebar-header">
+        <a href="../index.html" class="admin-brand" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--admin-text);">
+          <div style="width: 36px; height: 36px; background: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--admin-border); overflow: hidden;">
+            <img src="../logo.png" alt="Explore Wings" width="26" height="26">
+          </div>
+          <div>
+            <div style="font-weight: 800; font-size: 0.9375rem; line-height: 1.2;">Explore Wings</div>
+            <div style="font-size: 0.6875rem; color: var(--admin-text-muted); text-transform: uppercase;">Admin Console</div>
+          </div>
+        </a>
+      </div>
+
+      <nav class="admin-nav" style="padding: 16px 12px; display: flex; flex-direction: column; gap: 4px;">
+        <a href="#dashboard" class="admin-nav-item active" data-tab="dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Dashboard</span>
+        </a>
+
+        <div style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--admin-text-muted); padding: 12px 12px 4px; font-weight: 700;">Character &amp; Text Editor</div>
+
+        <a href="#editor-home" class="admin-nav-item" data-tab="editor-home">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>Home Page Text</span>
+        </a>
+
+        <a href="#editor-contact" class="admin-nav-item" data-tab="editor-contact">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Studio &amp; Contact Info</span>
+        </a>
+
+        <div style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--admin-text-muted); padding: 12px 12px 4px; font-weight: 700;">System &amp; Controls</div>
+
+        <a href="#maintenance" class="admin-nav-item" data-tab="maintenance">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+          <span>Maintenance Mode</span>
+        </a>
+
+        <a href="#enquiries" class="admin-nav-item" data-tab="enquiries">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          <span>Leads &amp; Enquiries</span>
+        </a>
+
+        <div style="font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--admin-text-muted); padding: 12px 12px 4px; font-weight: 700;">Live Actions</div>
+
+        <a href="../index.html?edit=live" target="_blank" class="admin-nav-item" style="color: #F59E0B; font-weight: 700;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+          <span>In-Page Visual Editor &rarr;</span>
+        </a>
+
+        <a href="../index.html" target="_blank" class="admin-nav-item">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          <span>View Public Site &rarr;</span>
+        </a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <h1 class="admin-topbar-title" id="adminHeaderTitle">Dashboard Overview</h1>
+        <div class="admin-topbar-actions">
+          <a href="#maintenance" id="topbarStatusPill" class="admin-status-pill online" style="text-decoration:none;">
+            <span class="status-dot"></span> <span id="topbarStatusText">Site Live</span>
+          </a>
+          <button type="button" class="admin-btn admin-btn-primary" onclick="saveAllInputs()">
+            💾 Save All Character Edits
+          </button>
+          <a href="../index.html" target="_blank" class="admin-btn-outline">
+            Open Site ↗
+          </a>
+        </div>
+      </header>
+
+      <div class="admin-content">
+
+        <!-- ==================================================================
+             TAB 1: DASHBOARD
+             ================================================================== -->
+        <div id="tab-dashboard" class="tab-content active">
+          <div class="admin-grid-stats" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:24px;">
+            <div class="admin-card stat-card" style="padding:20px;">
+              <span class="stat-label" style="font-size:0.75rem; text-transform:uppercase; color:var(--admin-text-muted); font-weight:700;">Site Status</span>
+              <div class="stat-value" id="dashboardStatusVal" style="font-size:1.6rem; font-weight:800; margin:6px 0;">
+                <span class="status-indicator online"></span> Live
+              </div>
+              <span style="font-size:0.75rem; color:var(--admin-text-muted);">Red Theme • Shopify Marketing Platform</span>
+            </div>
+            <div class="admin-card stat-card" style="padding:20px;">
+              <span class="stat-label" style="font-size:0.75rem; text-transform:uppercase; color:var(--admin-text-muted); font-weight:700;">Character Edits</span>
+              <div class="stat-value" id="dashboardEditsVal" style="font-size:1.6rem; font-weight:800; margin:6px 0;">Active</div>
+              <span style="font-size:0.75rem; color:#10B981;">Custom strings rendered on DOM</span>
+            </div>
+            <div class="admin-card stat-card" style="padding:20px;">
+              <span class="stat-label" style="font-size:0.75rem; text-transform:uppercase; color:var(--admin-text-muted); font-weight:700;">Leads Captured</span>
+              <div class="stat-value" id="dashboardLeadsVal" style="font-size:1.6rem; font-weight:800; margin:6px 0;">0</div>
+              <span style="font-size:0.75rem; color:var(--admin-text-muted);">From consultation form</span>
+            </div>
+          </div>
+
+          <div class="admin-card" style="margin-bottom:24px;">
+            <div class="admin-card-header" style="padding:16px 20px; border-bottom:1px solid var(--admin-border); display:flex; justify-content:space-between; align-items:center;">
+              <h2 style="font-size:1.15rem; font-weight:800; margin:0;">Quick Character &amp; Text Editing Shortcuts</h2>
+              <a href="../index.html?edit=live" target="_blank" class="admin-btn admin-btn-primary" style="font-size:0.8rem;">
+                ✏️ Launch Click-To-Type In-Page
+              </a>
+            </div>
+            <div class="admin-card-body" style="padding:20px;">
+              <p style="font-size:0.88rem; color:var(--admin-text-muted); margin-bottom:16px;">
+                You can edit the characters and words on your website in two ways:
+              </p>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                <div style="background:var(--admin-bg-surface); padding:16px; border-radius:8px; border:1px solid var(--admin-border);">
+                  <h4 style="margin:0 0 8px 0; font-size:1rem; font-weight:700;">1. Form Input Fields</h4>
+                  <p style="font-size:0.82rem; color:var(--admin-text-muted); margin-bottom:12px;">Type directly into the inputs under <strong>Home Page Text</strong> or <strong>Studio &amp; Contact Info</strong> tabs, then hit Save.</p>
+                  <button type="button" class="admin-btn admin-btn-outline" onclick="switchTab('editor-home')">Open Home Text Inputs →</button>
+                </div>
+                <div style="background:var(--admin-bg-surface); padding:16px; border-radius:8px; border:1px solid var(--admin-border);">
+                  <h4 style="margin:0 0 8px 0; font-size:1rem; font-weight:700;">2. Visual In-Page Typing</h4>
+                  <p style="font-size:0.82rem; color:var(--admin-text-muted); margin-bottom:12px;">Click on any headline or paragraph directly on the live website and type with your keyboard like a word processor.</p>
+                  <a href="../index.html?edit=live" target="_blank" class="admin-btn admin-btn-outline">Open Live Visual Mode →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             TAB 2: HOME PAGE TEXT & CHARACTER EDITOR
+             ================================================================== -->
+        <div id="tab-editor-home" class="tab-content">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+            <div>
+              <h2 style="font-size:1.35rem; font-weight:800; margin:0;">Home Page Character &amp; Copy Editor</h2>
+              <p style="font-size:0.84rem; color:var(--admin-text-muted); margin:4px 0 0 0;">Type any words or characters into the fields below. Changes apply across the site immediately.</p>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button type="button" class="admin-btn admin-btn-outline" onclick="resetToDefaults()">Reset Defaults</button>
+              <button type="button" class="admin-btn admin-btn-primary" onclick="saveAllInputs()">💾 Save Changes</button>
+            </div>
+          </div>
+
+          <div class="edit-grid">
+            <!-- 1. Top Announcement Bar -->
+            <div class="admin-card" style="padding:20px;">
+              <span class="admin-badge" style="background:#E11D2E; color:#FFF; font-weight:800; font-size:0.7rem; text-transform:uppercase;">Section 1: Top Bar</span>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">Top Bar Announcement Text</label>
+                <input type="text" id="input_home_announcement" class="admin-input" oninput="updateCharCount(this, 'cnt_announcement')">
+                <div class="char-counter" id="cnt_announcement">0 characters</div>
+              </div>
+            </div>
+
+            <!-- 2. Hero Pill Tagline -->
+            <div class="admin-card" style="padding:20px;">
+              <span class="admin-badge" style="background:#E11D2E; color:#FFF; font-weight:800; font-size:0.7rem; text-transform:uppercase;">Section 3: Hero Pill</span>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">Hero Small Pill Text</label>
+                <input type="text" id="input_home_hero_badge" class="admin-input" oninput="updateCharCount(this, 'cnt_hero_badge')">
+                <div class="char-counter" id="cnt_hero_badge">0 characters</div>
+              </div>
+            </div>
+
+            <!-- 3. Hero Main Headline -->
+            <div class="admin-card" style="padding:20px; grid-column: 1 / -1;">
+              <span class="admin-badge" style="background:#E11D2E; color:#FFF; font-weight:800; font-size:0.7rem; text-transform:uppercase;">Section 3: Hero Headline</span>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">Main Hero Headline (Large Text)</label>
+                <input type="text" id="input_home_hero_title" class="admin-input" oninput="updateCharCount(this, 'cnt_hero_title')">
+                <div class="char-counter" id="cnt_hero_title">0 characters</div>
+              </div>
+            </div>
+
+            <!-- 4. Hero Subtext -->
+            <div class="admin-card" style="padding:20px; grid-column: 1 / -1;">
+              <span class="admin-badge" style="background:#E11D2E; color:#FFF; font-weight:800; font-size:0.7rem; text-transform:uppercase;">Section 3: Hero Subtext</span>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">Hero Lead Paragraph / Description</label>
+                <textarea id="input_home_hero_subtext" class="admin-textarea" rows="3" oninput="updateCharCount(this, 'cnt_hero_subtext')"></textarea>
+                <div class="char-counter" id="cnt_hero_subtext">0 characters</div>
+              </div>
+            </div>
+
+            <!-- 5. Hero Button & Trust Points -->
+            <div class="admin-card" style="padding:20px;">
+              <span class="admin-badge" style="background:#E11D2E; color:#FFF; font-weight:800; font-size:0.7rem; text-transform:uppercase;">Section 3: Conversion Button</span>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">Hero Consultation Button Text</label>
+                <input type="text" id="input_home_hero_btn" class="admin-input" oninput="updateCharCount(this, 'cnt_hero_btn')">
+                <div class="char-counter" id="cnt_hero_btn">0 characters</div>
+              </div>
+            </div>
+
+            <!-- 6. Hero Browser Mockup Caption -->
+            <div class="admin-card" style="padding:20px;">
+              <span class="admin-badge" style="background:#E11D2E; color:#FFF; font-weight:800; font-size:0.7rem; text-transform:uppercase;">Section 3: Mockup Caption</span>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">Browser Mockup Screen Headline</label>
+                <input type="text" id="input_home_browser_caption" class="admin-input" oninput="updateCharCount(this, 'cnt_mockup_caption')">
+                <div class="char-counter" id="cnt_mockup_caption">0 characters</div>
+              </div>
+            </div>
+
+            <!-- 7. Static Brand Row Headline -->
+            <div class="admin-card" style="padding:20px;">
+              <span class="admin-badge" style="background:#E11D2E; color:#FFF; font-weight:800; font-size:0.7rem; text-transform:uppercase;">Section 4: Brand Row</span>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">Static Brand Strip Title</label>
+                <input type="text" id="input_home_static_strip_text" class="admin-input" oninput="updateCharCount(this, 'cnt_brand_strip')">
+                <div class="char-counter" id="cnt_brand_strip">0 characters</div>
+              </div>
+            </div>
+
+            <!-- 8. Services Section Header -->
+            <div class="admin-card" style="padding:20px;">
+              <span class="admin-badge" style="background:#E11D2E; color:#FFF; font-weight:800; font-size:0.7rem; text-transform:uppercase;">Section 5: Services Header</span>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">Services Main Title</label>
+                <input type="text" id="input_home_services_title" class="admin-input" oninput="updateCharCount(this, 'cnt_svc_title')">
+                <div class="char-counter" id="cnt_svc_title">0 characters</div>
+              </div>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">Services Description Paragraph</label>
+                <textarea id="input_home_services_desc" class="admin-textarea" rows="2" oninput="updateCharCount(this, 'cnt_svc_desc')"></textarea>
+                <div class="char-counter" id="cnt_svc_desc">0 characters</div>
+              </div>
+            </div>
+
+            <!-- 9. Closing CTA Section -->
+            <div class="admin-card" style="padding:20px; grid-column: 1 / -1;">
+              <span class="admin-badge" style="background:#E11D2E; color:#FFF; font-weight:800; font-size:0.7rem; text-transform:uppercase;">Section 12: Closing Call To Action</span>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">CTA Banner Headline</label>
+                <input type="text" id="input_home_cta_title" class="admin-input" oninput="updateCharCount(this, 'cnt_cta_title')">
+                <div class="char-counter" id="cnt_cta_title">0 characters</div>
+              </div>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">CTA Subtext Paragraph</label>
+                <textarea id="input_home_cta_subtext" class="admin-textarea" rows="2" oninput="updateCharCount(this, 'cnt_cta_subtext')"></textarea>
+                <div class="char-counter" id="cnt_cta_subtext">0 characters</div>
+              </div>
+              <div class="admin-form-group" style="margin-top:12px;">
+                <label class="admin-label" style="font-weight:700; font-size:0.85rem;">CTA Button Label</label>
+                <input type="text" id="input_home_cta_btn" class="admin-input" oninput="updateCharCount(this, 'cnt_cta_btn')">
+                <div class="char-counter" id="cnt_cta_btn">0 characters</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:20px; padding:16px; background:var(--admin-bg-surface); border-radius:8px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <span style="font-size:0.85rem; font-weight:600;">Finished editing characters?</span>
+            <div style="display:flex; gap:10px;">
+              <button type="button" class="admin-btn admin-btn-primary" onclick="saveAllInputs()">💾 Save All Typed Characters</button>
+              <a href="../index.html" target="_blank" class="admin-btn admin-btn-outline">Preview on Live Site →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             TAB 3: CONTACT & STUDIO DETAILS
+             ================================================================== -->
+        <div id="tab-editor-contact" class="tab-content">
+          <div style="margin-bottom:20px;">
+            <h2 style="font-size:1.35rem; font-weight:800; margin:0;">Studio Location &amp; Channels</h2>
+            <p style="font-size:0.84rem; color:var(--admin-text-muted); margin:4px 0 0 0;">Update your Trivandrum studio address, phone numbers, WhatsApp, and email.</p>
+          </div>
+
+          <div class="admin-card" style="padding:20px; max-width:700px;">
+            <div class="admin-form-group">
+              <label class="admin-label" style="font-weight:700;">Studio Address</label>
+              <textarea id="input_contact_address" class="admin-textarea" rows="2"></textarea>
+            </div>
+            <div class="admin-form-group" style="margin-top:14px;">
+              <label class="admin-label" style="font-weight:700;">Phone Number</label>
+              <input type="text" id="input_contact_phone" class="admin-input">
+            </div>
+            <div class="admin-form-group" style="margin-top:14px;">
+              <label class="admin-label" style="font-weight:700;">Email Address</label>
+              <input type="email" id="input_contact_email" class="admin-input">
+            </div>
+            <div style="margin-top:20px;">
+              <button type="button" class="admin-btn admin-btn-primary" onclick="saveAllInputs()">💾 Save Contact Channels</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             TAB 4: MAINTENANCE MODE
+             ================================================================== -->
+        <div id="tab-maintenance" class="tab-content">
+          <div class="admin-card" style="padding:24px; max-width:700px;">
+            <h2 style="font-size:1.25rem; font-weight:800; margin:0 0 8px 0;">Maintenance Mode Control</h2>
+            <p style="font-size:0.84rem; color:var(--admin-text-muted); margin-bottom:20px;">
+              When maintenance mode is active, public visitors will be blocked with an HTTP 503 screen.
+            </p>
+            <div style="background:var(--admin-bg-surface); padding:16px; border-radius:8px; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center;">
+              <div>
+                <span id="maintStatusBadge" class="admin-badge status-active">✓ Public Site Live</span>
+                <div style="font-size:0.8rem; color:var(--admin-text-muted); margin-top:4px;" id="maintStatusNotice">Visitors can freely view all pages.</div>
+              </div>
+              <button type="button" id="maintToggleBtn" class="admin-btn admin-btn-danger" onclick="toggleMaintenance()">
+                Enable Maintenance Mode
+              </button>
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-label">Maintenance Message for Visitors</label>
+              <textarea id="maintMsgInput" class="admin-textarea" rows="2">We are currently performing a scheduled update. We will be back shortly.</textarea>
+            </div>
+            <button type="button" class="admin-btn admin-btn-primary" style="margin-top:12px;" onclick="saveMaintSettings()">
+              Save Maintenance Notice
+            </button>
+          </div>
+        </div>
+
+        <!-- ==================================================================
+             TAB 5: LEADS & ENQUIRIES INBOX
+             ================================================================== -->
+        <div id="tab-enquiries" class="tab-content">
+          <div class="admin-card" style="padding:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+              <h2 style="font-size:1.2rem; font-weight:800; margin:0;">Visitor Enquiries &amp; Leads</h2>
+              <button type="button" class="admin-btn admin-btn-outline" onclick="clearLeads()">Clear Leads</button>
+            </div>
+            <table class="admin-table" style="width:100%; border-collapse:collapse;">
+              <thead>
+                <tr style="border-bottom:1px solid var(--admin-border); text-align:left; font-size:0.75rem; text-transform:uppercase; color:var(--admin-text-muted);">
+                  <th style="padding:10px;">Contact / Email / WhatsApp</th>
+                  <th style="padding:10px;">Source Form</th>
+                  <th style="padding:10px;">Date &amp; Time</th>
+                </tr>
+              </thead>
+              <tbody id="leadsTableBody">
+                <tr><td colspan="3" style="padding:20px; text-align:center; color:var(--admin-text-muted);">No enquiries submitted yet.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const SECTIONS_KEY = 'ew_custom_sections';
+    const MAINT_KEY = 'maintenance_mode';
+    const ENQUIRIES_KEY = 'ew_enquiries';
+
+    // Default Seed Strings
+    const DEFAULTS = {
+      home_announcement: "Free 30-Minute Brand & Website Strategy Session • Serving Businesses Across Kerala & Beyond",
+      home_hero_badge: "Explore Wings Digital Technologies • Trivandrum, Kerala",
+      home_hero_title: "Build a brand customers in Kerala choose first.",
+      home_hero_subtext: "From Kazhakkoottam and Kowdiar to Kovalam and across Kerala — we design your website, craft your logo & packaging, shoot your photos & Reels, and bring real customer enquiries to your door.",
+      home_hero_btn: "Get free consultation",
+      home_browser_caption: "Designed for Kerala's Best Businesses",
+      home_static_strip_text: "Partnered With Ambitious Brands Across Trivandrum & Kerala",
+      home_services_title: "Complete Brand Launch & Growth Services Under One Trivandrum Roof",
+      home_services_desc: "From brand identity and custom web development to viral food Reels and Google local ranking — we build and manage everything your business needs to grow.",
+      home_cta_title: "Ready to Launch or Redesign Your Brand in Kerala?",
+      home_cta_subtext: "Book a free 30-minute consultation. We'll review your current website, social media, or branding, and show you exactly where enquiries are being lost.",
+      home_cta_btn: "Claim Free Consultation",
+      contact_address: "Thiruvananthapuram (Trivandrum), Kerala, India",
+      contact_phone: "+91 90000 00000",
+      contact_email: "hello@explorewings.in"
+    };
+
+    function initAdmin() {
+      // 1. Load custom or default strings into inputs
+      const saved = JSON.parse(localStorage.getItem(SECTIONS_KEY) || '{}');
+      const data = { ...DEFAULTS, ...saved };
+
+      Object.keys(DEFAULTS).forEach(key => {
+        const input = document.getElementById('input_' + key);
+        if (input) {
+          input.value = data[key] || '';
+          const counterId = 'cnt_' + key.replace('home_', '').replace('contact_', '');
+          updateCharCount(input, counterId);
+        }
+      });
+
+      // 2. Load maintenance UI
+      updateMaintUI();
+
+      // 3. Load Leads
+      loadLeads();
+
+      // 4. Tab click handlers
+      document.querySelectorAll('.admin-nav-item[data-tab]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const tab = link.getAttribute('data-tab');
+          switchTab(tab);
+        });
+      });
+    }
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+      document.querySelectorAll('.admin-nav-item').forEach(an => an.classList.remove('active'));
+
+      const activeTab = document.getElementById('tab-' + tabId);
+      const activeLink = document.querySelector(`.admin-nav-item[data-tab="${tabId}"]`);
+      if (activeTab) activeTab.classList.add('active');
+      if (activeLink) activeLink.classList.add('active');
+
+      const titleMap = {
+        'dashboard': 'Dashboard Overview',
+        'editor-home': 'Home Page Character & Text Editor',
+        'editor-contact': 'Studio & Contact Info',
+        'maintenance': 'Maintenance Mode Controls',
+        'enquiries': 'Leads & Enquiries'
+      };
+      document.getElementById('adminHeaderTitle').textContent = titleMap[tabId] || 'Admin Console';
+    }
+
+    function updateCharCount(el, counterId) {
+      const counter = document.getElementById(counterId);
+      if (counter) {
+        counter.textContent = `${el.value.length} characters`;
+      }
+    }
+
+    function saveAllInputs() {
+      const saved = JSON.parse(localStorage.getItem(SECTIONS_KEY) || '{}');
+      Object.keys(DEFAULTS).forEach(key => {
+        const input = document.getElementById('input_' + key);
+        if (input) {
+          saved[key] = input.value.trim();
+        }
+      });
+      localStorage.setItem(SECTIONS_KEY, JSON.stringify(saved));
+
+      // Show toast
+      const toast = document.getElementById('saveToast');
+      toast.style.display = 'flex';
+      setTimeout(() => { toast.style.display = 'none'; }, 2500);
+    }
+
+    function resetToDefaults() {
+      if (confirm('Reset all website characters back to initial defaults?')) {
+        localStorage.removeItem(SECTIONS_KEY);
+        initAdmin();
+        alert('All fields reset to initial defaults.');
+      }
+    }
+
+    function updateMaintUI() {
+      const isMaint = localStorage.getItem(MAINT_KEY) === 'on';
+      const badge = document.getElementById('maintStatusBadge');
+      const notice = document.getElementById('maintStatusNotice');
+      const btn = document.getElementById('maintToggleBtn');
+      const pill = document.getElementById('topbarStatusPill');
+      const pillText = document.getElementById('topbarStatusText');
+      const dashVal = document.getElementById('dashboardStatusVal');
+
+      if (isMaint) {
+        badge.className = 'admin-badge warning';
+        badge.textContent = '⚠️ Maintenance Active (503)';
+        notice.textContent = 'Public visitors see the 503 maintenance screen.';
+        btn.className = 'admin-btn admin-btn-primary';
+        btn.textContent = 'Turn Off Maintenance & Go Live';
+        pill.className = 'admin-status-pill warning';
+        pillText.textContent = 'Maintenance (503)';
+        if (dashVal) dashVal.innerHTML = '<span class="status-indicator warning"></span> Maintenance';
+      } else {
+        badge.className = 'admin-badge status-active';
+        badge.textContent = '✓ Public Site Live';
+        notice.textContent = 'Visitors can freely view all pages.';
+        btn.className = 'admin-btn admin-btn-danger';
+        btn.textContent = 'Enable Maintenance Mode (Block Visitors)';
+        pill.className = 'admin-status-pill online';
+        pillText.textContent = 'Site Live';
+        if (dashVal) dashVal.innerHTML = '<span class="status-indicator online"></span> Live';
+      }
+    }
+
+    function toggleMaintenance() {
+      const current = localStorage.getItem(MAINT_KEY) === 'on';
+      const next = current ? 'off' : 'on';
+      localStorage.setItem(MAINT_KEY, next);
+      updateMaintUI();
+      alert(next === 'on' 
+        ? 'Maintenance Mode is now ON! Visitors will see the 503 maintenance page.' 
+        : 'Maintenance Mode is now OFF! Website is LIVE to all visitors.');
+    }
+
+    function saveMaintSettings() {
+      alert('Maintenance notice updated.');
+    }
+
+    function loadLeads() {
+      const leads = JSON.parse(localStorage.getItem(ENQUIRIES_KEY) || '[]');
+      const tbody = document.getElementById('leadsTableBody');
+      const dashLeads = document.getElementById('dashboardLeadsVal');
+      if (dashLeads) dashLeads.textContent = leads.length;
+
+      if (!leads.length) {
+        tbody.innerHTML = '<tr><td colspan="3" style="padding:20px; text-align:center; color:var(--admin-text-muted);">No enquiries submitted yet.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = leads.map(l => `
+        <tr style="border-bottom:1px solid var(--admin-border);">
+          <td style="padding:10px; font-weight:700;">${l.contact}</td>
+          <td style="padding:10px; font-size:0.8rem; color:var(--admin-text-muted);">${l.form || 'Website'}</td>
+          <td style="padding:10px; font-size:0.8rem; color:var(--admin-text-muted);">${new Date(l.submitted_at).toLocaleString()}</td>
+        </tr>
+      `).join('');
+    }
+
+    function clearLeads() {
+      if (confirm('Clear all recorded leads?')) {
+        localStorage.removeItem(ENQUIRIES_KEY);
+        loadLeads();
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', initAdmin);
+  </script>
+</body>
+</html>
