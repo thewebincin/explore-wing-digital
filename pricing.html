@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="red" data-mode="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing &amp; Packages | Explore Wings Digital Technologies — Trivandrum</title>
+  <meta name="description" content="Compare Essential, Signature, and Premium packages for websites, branding, social media, and digital marketing at Explore Wings Digital Technologies in Trivandrum." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Preloader, Sweep & Theme Wipe -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-panel-left"></div>
+    <div class="preloader-panel-right"></div>
+    <div class="preloader-center">
+      <div class="logo-white-chip chip-lg"><img src="logo.png" alt="Explore Wings Logo" /></div>
+      <div class="preloader-counter" id="preloaderCounter">0%</div>
+      <div class="preloader-bar"><div class="preloader-bar-fill" id="preloaderBarFill"></div></div>
+    </div>
+  </div>
+  <div class="page-transition-sweep" id="pageTransitionSweep" aria-hidden="true">
+    <div class="logo-white-chip chip-lg"><img src="logo.png" alt="Explore Wings Logo" /></div>
+  </div>
+  <div class="theme-wipe-circle" id="themeWipeCircle" aria-hidden="true"></div>
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar" role="region" aria-label="Announcement and Site Preferences">
+    <div class="container top-utility-inner">
+      <div class="top-announcement-msg">
+        <span class="top-announcement-badge">Clear Packages</span>
+        <span>Flexible One-Time Launch Packages &amp; Monthly Retainers • Custom Quotes Available</span>
+      </div>
+      <div class="top-controls-cluster">
+        <div class="auto-scroll-group">
+          <button type="button" class="auto-scroll-toggle-btn" aria-pressed="false">▶ Auto scroll</button>
+          <select class="auto-scroll-speed-select" aria-label="Auto scroll speed">
+            <option value="slow">Slow</option>
+            <option value="medium" selected>Medium</option>
+            <option value="fast">Fast</option>
+          </select>
+        </div>
+        <div class="theme-swatch-group">
+          <span class="theme-swatch-label">Theme:</span>
+          <button type="button" class="theme-swatch swatch-green" data-set-theme="green" aria-label="Green Theme"></button>
+          <button type="button" class="theme-swatch swatch-red active" data-set-theme="red" aria-label="Red Theme"></button>
+        </div>
+        <button type="button" class="mode-toggle-btn"><span>☀</span> <span>Light Mode</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="brand-logo-link">
+        <span class="logo-white-chip"><img src="logo.png" alt="Explore Wings Logo" /></span>
+        <span class="brand-logo-text">
+          <span class="brand-logo-title">Explore Wings</span>
+          <span class="brand-logo-sub">Digital Technologies</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
+        <div class="nav-item"><a href="services.html" class="nav-link">Services</a></div>
+        <div class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></div>
+        <div class="nav-item"><a href="pricing.html" class="nav-link active">Pricing</a></div>
+        <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="nav-login-link">Log in / Contact</a>
+        <a href="contact.html" class="btn btn-primary"><span>Start your project</span> <span class="btn-arrow">→</span></a>
+        <button type="button" class="menu-toggle" aria-label="Open Mobile Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+        <a href="index.html" class="brand-logo-link"><span class="logo-white-chip"><img src="logo.png" alt="Explore Wings Logo" /></span><span class="brand-logo-title">Explore Wings</span></a>
+        <button type="button" class="drawer-close-btn" id="closeMobileDrawerBtn">✕</button>
+      </div>
+      <div class="mobile-accordion-item"><a href="index.html" class="mobile-accordion-btn">Home</a></div>
+      <div class="mobile-accordion-item"><a href="services.html" class="mobile-accordion-btn">Services</a></div>
+      <div class="mobile-accordion-item"><a href="portfolio.html" class="mobile-accordion-btn">Portfolio</a></div>
+      <div class="mobile-accordion-item"><a href="pricing.html" class="mobile-accordion-btn">Pricing</a></div>
+      <div class="mobile-accordion-item"><a href="about.html" class="mobile-accordion-btn">About</a></div>
+      <div class="mobile-accordion-item"><a href="contact.html" class="mobile-accordion-btn">Contact</a></div>
+    </div>
+  </aside>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-content" data-reveal="up">
+          <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Pricing</span></div>
+          <span class="eyebrow"><span class="eyebrow-dot"></span> <span>Simple, Honest Packages</span></span>
+          <h1 class="display-xl">Clear Plans Built for <span class="theme-shimmer">Every Stage</span> of Growth.</h1>
+          <p>
+            Switch between one-time launch packages and monthly growth partnerships below. All pricing figures are marked as editable placeholders.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 Package Tiers (Essential, Signature Highlighted, Premium) -->
+    <section class="section">
+      <div class="container">
+        <div class="packages-toggle-wrap" data-reveal="up">
+          <span>One-Time Project</span>
+          <button type="button" class="billing-switch" id="billingSwitch" aria-label="Toggle One-Time or Monthly Pricing"></button>
+          <span>Monthly Partnership</span>
+        </div>
+
+        <div class="packages-grid-3" data-stagger="100">
+          <!-- Tier 1: Essential -->
+          <article class="package-card" data-reveal="left">
+            <div>
+              <span class="package-tier-name">01 • Essential</span>
+              <div class="package-price" data-price-onetime="₹45,000" data-price-monthly="₹22,000/mo">₹45,000</div>
+              <div class="package-price-note">One-time complete project investment [Placeholder]</div>
+              <p class="body-md" style="margin-bottom:1.35rem;">
+                Ideal for new cafes, boutiques, and local businesses in Trivandrum launching their professional identity and mobile website.
+              </p>
+              <div class="package-features">
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Custom 5-Page Mobile-First Website</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Logo Refresh &amp; Brand Colour Guide</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Direct WhatsApp &amp; Contact Integration</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Google Business Profile &amp; Maps Setup</span></div>
+              </div>
+            </div>
+            <a href="contact.html" class="btn btn-outline" style="width:100%;"><span>Choose Essential</span> <span class="btn-arrow">→</span></a>
+          </article>
+
+          <!-- Tier 2: Signature (Middle Highlighted) -->
+          <article class="package-card featured" data-reveal="zoom">
+            <span class="most-loved-ribbon">Most Popular</span>
+            <div>
+              <span class="package-tier-name">02 • Signature</span>
+              <div class="package-price" data-price-onetime="₹95,000" data-price-monthly="₹42,000/mo">₹95,000</div>
+              <div class="package-price-note">One-time complete project investment [Placeholder]</div>
+              <p class="body-md" style="color:rgba(255,255,255,0.84); margin-bottom:1.35rem;">
+                Our flagship package for resorts, restaurants, academies, and showrooms wanting a full website, branding kit, and on-location photo/video shoot.
+              </p>
+              <div class="package-features">
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Custom 10+ Page Website / Showcase Portal</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Complete Logo, Menu &amp; Packaging Design</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Full-Day On-Location Photo &amp; Reels Shoot</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Local SEO &amp; Launch Ad Campaign Setup</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Dedicated Trivandrum Account Manager</span></div>
+              </div>
+            </div>
+            <a href="contact.html" class="btn btn-accent" style="width:100%;"><span>Choose Signature</span> <span class="btn-arrow">→</span></a>
+          </article>
+
+          <!-- Tier 3: Premium -->
+          <article class="package-card" data-reveal="right">
+            <div>
+              <span class="package-tier-name">03 • Premium</span>
+              <div class="package-price" data-price-onetime="₹1,85,000" data-price-monthly="₹75,000/mo">₹1,85,000</div>
+              <div class="package-price-note">One-time complete project investment [Placeholder]</div>
+              <p class="body-md" style="margin-bottom:1.35rem;">
+                For destination malls, multi-branch brands, large resorts, and institutions requiring end-to-end production and ongoing campaigns.
+              </p>
+              <div class="package-features">
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Bespoke Multi-Section Platform &amp; Funnels</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Complete Packaging, Signage &amp; Brand Book</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>2-Day Cinema, Drone &amp; Food/Model Shoot</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Full Social Media &amp; Performance Marketing</span></div>
+                <div class="checklist-item"><span class="tick-circle">✓</span> <span>Priority Same-Day Studio Support</span></div>
+              </div>
+            </div>
+            <a href="contact.html" class="btn btn-outline" style="width:100%;"><span>Choose Premium</span> <span class="btn-arrow">→</span></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Full Comparison Table -->
+    <section class="section section-elevated">
+      <div class="container">
+        <div class="section-header" data-reveal="up">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> <span>Side-by-Side Comparison</span></span>
+          <h2 class="display-lg">Compare Every Feature</h2>
+        </div>
+
+        <div class="compare-table-wrap" data-reveal="up">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>Deliverable / Capability</th>
+                <th>Essential</th>
+                <th>Signature (Highlighted)</th>
+                <th>Premium</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Custom Mobile-First Website</strong></td>
+                <td>Up to 5 Pages</td>
+                <td><strong>Up to 12 Pages</strong></td>
+                <td>Unlimited / Custom</td>
+              </tr>
+              <tr>
+                <td><strong>Logo &amp; Brand Identity Kit</strong></td>
+                <td>Refresh &amp; Colours</td>
+                <td><strong>Full Logo + Packaging/Menu</strong></td>
+                <td>Complete Brand Book &amp; Signage</td>
+              </tr>
+              <tr>
+                <td><strong>On-Location Photo &amp; Video Shoot</strong></td>
+                <td>Add-on Available</td>
+                <td><strong>1 Full Day in Trivandrum</strong></td>
+                <td>2 Days + Drone Aerials</td>
+              </tr>
+              <tr>
+                <td><strong>Instagram Reels &amp; Social Media</strong></td>
+                <td>Launch Templates</td>
+                <td><strong>8 Reels + 12 Posts</strong></td>
+                <td>15 Reels + Daily Management</td>
+              </tr>
+              <tr>
+                <td><strong>Google Maps &amp; Local SEO</strong></td>
+                <td>✓ Included</td>
+                <td><strong>✓ Included + Local Ads</strong></td>
+                <td>✓ Multi-Location SEO &amp; Ads</td>
+              </tr>
+              <tr>
+                <td><strong>WhatsApp Enquiry &amp; Booking Flow</strong></td>
+                <td>✓ Included</td>
+                <td><strong>✓ Included</strong></td>
+                <td>✓ Custom CRM / Funnel</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing FAQ Accordion -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header" data-reveal="up">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> <span>Pricing FAQ</span></span>
+          <h2 class="display-lg">Questions About Packages &amp; Billing</h2>
+        </div>
+
+        <div class="faq-list" data-reveal="up">
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>What is the difference between a One-Time Project and a Monthly Partnership?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                A <strong>One-Time Project</strong> covers building and launching your website, logo, packaging, or initial shoot with no recurring commitment. A <strong>Monthly Partnership</strong> is for ongoing Instagram Reels, festive campaigns, Google Maps updates, and ad management.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Can we customize a package to fit our exact requirements in Trivandrum?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Yes! Every business is unique. Whether you run a resort in Kovalam, a cafe in Kazhakkoottam, or an academy in the city center, we can tailor deliverables and milestone payments to match your launch schedule.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span>Are there any hidden fees for domain, hosting, or ad spend?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Never. Domain registration, hosting, and paid Meta/Google ad budgets are billed transparently at actuals directly to your account so you always stay in full control.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing CTA Band -->
+    <section class="cta-banner-section">
+      <div class="cta-banner-card" data-reveal="zoom">
+        <div class="cta-banner-content">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> <span>Tailored Proposals</span></span>
+          <h2 class="display-xl">Need a custom quote for your <span class="theme-shimmer">project?</span></h2>
+          <p>Tell us what you are launching and we will prepare a clear, itemized proposal within 24 hours.</p>
+          <a href="contact.html" class="btn btn-accent"><span>Get free consultation</span> <span class="btn-arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo-link">
+            <span class="logo-white-chip"><img src="logo.png" alt="Explore Wings Logo" /></span>
+            <span class="brand-logo-text">
+              <span class="brand-logo-title" style="color:#FFFFFF;">Explore Wings</span>
+              <span class="brand-logo-sub" style="color:var(--theme-accent);">Digital Technologies</span>
+            </span>
+          </a>
+          <p>Websites, branding, photography, and digital marketing in Trivandrum, Kerala.</p>
+        </div>
+        <div class="footer-col"><h5>Services</h5><ul><li><a href="services.html#service-websites">Website Design</a></li><li><a href="services.html#service-branding">Branding &amp; Logos</a></li><li><a href="services.html#service-social">Social Media</a></li><li><a href="services.html#service-production">Photo &amp; Video</a></li></ul></div>
+        <div class="footer-col"><h5>Company</h5><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div class="footer-col"><h5>Packages</h5><ul><li><a href="pricing.html">Essential Plan</a></li><li><a href="pricing.html">Signature Plan</a></li><li><a href="pricing.html">Premium Plan</a></li></ul></div>
+        <div class="footer-col"><h5>Trivandrum HQ</h5><p>Thiruvananthapuram, Kerala [Placeholder]</p><p style="margin-top:0.4rem;"><strong style="color:var(--theme-accent);">Phone:</strong> +91 90000 00000 [Placeholder]</p></div>
+      </div>
+      <div class="footer-giant-watermark" aria-hidden="true">EXPLORE WINGS</div>
+      <div class="footer-bottom"><span>© 2026 Explore Wings Digital Technologies • Trivandrum, Kerala.</span></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.257.59 4.46 1.71 6.404L3.2 28.8l6.565-1.693a12.74 12.74 0 0 0 6.239 1.627h.005c7.068 0 12.796-5.73 12.796-12.8 0-3.42-1.332-6.635-3.75-9.052A12.716 12.716 0 0 0 16.004 3.2z"/></svg>
+    <span class="whatsapp-tooltip">Chat With Us on WhatsApp</span>
+  </a>
+  <button type="button" class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="chatbot.js" defer></script>
+</body>
+</html>

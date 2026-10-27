@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="red" data-mode="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services | Explore Wings Digital Technologies — Trivandrum, Kerala</title>
+  <meta name="description" content="Explore our six core services in Trivandrum, Kerala: Website design, Branding & logos, Social media, Photo & video, Digital marketing, and Business websites." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Preloader, Sweep & Theme Wipe -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-panel-left"></div>
+    <div class="preloader-panel-right"></div>
+    <div class="preloader-center">
+      <div class="logo-white-chip chip-lg"><img src="logo.png" alt="Explore Wings Logo" /></div>
+      <div class="preloader-counter" id="preloaderCounter">0%</div>
+      <div class="preloader-bar"><div class="preloader-bar-fill" id="preloaderBarFill"></div></div>
+    </div>
+  </div>
+  <div class="page-transition-sweep" id="pageTransitionSweep" aria-hidden="true">
+    <div class="logo-white-chip chip-lg"><img src="logo.png" alt="Explore Wings Logo" /></div>
+  </div>
+  <div class="theme-wipe-circle" id="themeWipeCircle" aria-hidden="true"></div>
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Top Utility Bar -->
+  <div class="top-utility-bar" role="region" aria-label="Announcement and Site Preferences">
+    <div class="container top-utility-inner">
+      <div class="top-announcement-msg">
+        <span class="top-announcement-badge">6 Core Services</span>
+        <span>Websites, Branding, Social Media, Photo &amp; Video, and Local Marketing Under One Roof in Trivandrum</span>
+      </div>
+      <div class="top-controls-cluster">
+        <div class="auto-scroll-group">
+          <button type="button" class="auto-scroll-toggle-btn" aria-pressed="false">▶ Auto scroll</button>
+          <select class="auto-scroll-speed-select" aria-label="Auto scroll speed">
+            <option value="slow">Slow</option>
+            <option value="medium" selected>Medium</option>
+            <option value="fast">Fast</option>
+          </select>
+        </div>
+        <div class="theme-swatch-group">
+          <span class="theme-swatch-label">Theme:</span>
+          <button type="button" class="theme-swatch swatch-green" data-set-theme="green" aria-label="Green Theme"></button>
+          <button type="button" class="theme-swatch swatch-red active" data-set-theme="red" aria-label="Red Theme"></button>
+        </div>
+        <button type="button" class="mode-toggle-btn"><span>☀</span> <span>Light Mode</span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sticky Navbar -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="brand-logo-link">
+        <span class="logo-white-chip"><img src="logo.png" alt="Explore Wings Logo" /></span>
+        <span class="brand-logo-text">
+          <span class="brand-logo-title">Explore Wings</span>
+          <span class="brand-logo-sub">Digital Technologies</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <div class="nav-item"><a href="index.html" class="nav-link">Home</a></div>
+        <div class="nav-item has-mega">
+          <a href="services.html" class="nav-link active"><span>Services</span> <span style="font-size:0.7rem;">▾</span></a>
+          <div class="mega-menu">
+            <div class="mega-grid-links">
+              <a href="#service-websites" class="mega-service-item"><div class="mega-icon">🌐</div><div><h5>Website Design</h5><p>Fast mobile-first websites</p></div></a>
+              <a href="#service-branding" class="mega-service-item"><div class="mega-icon">✦</div><div><h5>Branding &amp; Logos</h5><p>Logos, menus &amp; packaging</p></div></a>
+              <a href="#service-social" class="mega-service-item"><div class="mega-icon">📱</div><div><h5>Social Media</h5><p>Instagram Reels &amp; campaigns</p></div></a>
+              <a href="#service-production" class="mega-service-item"><div class="mega-icon">🎬</div><div><h5>Photo &amp; Video</h5><p>Food, resort &amp; product shoots</p></div></a>
+              <a href="#service-marketing" class="mega-service-item"><div class="mega-icon">📍</div><div><h5>Digital Marketing</h5><p>Google Maps &amp; local ads</p></div></a>
+              <a href="#service-business-web" class="mega-service-item"><div class="mega-icon">📅</div><div><h5>Business Websites</h5><p>Bookings &amp; WhatsApp portals</p></div></a>
+            </div>
+            <div class="mega-promo-card">
+              <div>
+                <span class="mega-promo-badge">Compare Tiers</span>
+                <h4 class="heading-lg">Transparent Packages</h4>
+                <p style="font-size:0.82rem; opacity:0.84;">See Essential, Signature, and Premium options.</p>
+              </div>
+              <a href="pricing.html" class="btn btn-accent" style="width:100%; padding:0.7rem 1rem; font-size:0.84rem;">View Pricing →</a>
+            </div>
+          </div>
+        </div>
+        <div class="nav-item"><a href="portfolio.html" class="nav-link">Portfolio</a></div>
+        <div class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></div>
+        <div class="nav-item"><a href="about.html" class="nav-link">About</a></div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="contact.html" class="nav-login-link">Log in / Contact</a>
+        <a href="contact.html" class="btn btn-primary"><span>Start your project</span> <span class="btn-arrow">→</span></a>
+        <button type="button" class="menu-toggle" aria-label="Open Mobile Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
+  <aside class="mobile-drawer" id="mobileDrawer">
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+        <a href="index.html" class="brand-logo-link"><span class="logo-white-chip"><img src="logo.png" alt="Explore Wings Logo" /></span><span class="brand-logo-title">Explore Wings</span></a>
+        <button type="button" class="drawer-close-btn" id="closeMobileDrawerBtn">✕</button>
+      </div>
+      <div class="mobile-accordion-item"><a href="index.html" class="mobile-accordion-btn">Home</a></div>
+      <div class="mobile-accordion-item"><a href="services.html" class="mobile-accordion-btn">Services</a></div>
+      <div class="mobile-accordion-item"><a href="portfolio.html" class="mobile-accordion-btn">Portfolio</a></div>
+      <div class="mobile-accordion-item"><a href="pricing.html" class="mobile-accordion-btn">Pricing</a></div>
+      <div class="mobile-accordion-item"><a href="about.html" class="mobile-accordion-btn">About</a></div>
+      <div class="mobile-accordion-item"><a href="contact.html" class="mobile-accordion-btn">Contact</a></div>
+    </div>
+  </aside>
+
+  <main>
+    <!-- Page Hero -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-content" data-reveal="up">
+          <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Services</span></div>
+          <span class="eyebrow"><span class="eyebrow-dot"></span> <span>Six Core Capabilities</span></span>
+          <h1 class="display-xl">Everything Your Brand Needs to <span class="theme-shimmer">Stand Out</span> Online.</h1>
+          <p>
+            Plain-English, benefit-driven creative and digital services crafted in Thiruvananthapuram for resorts, cafes, academies, fitness clubs, clinics, and retail brands.
+          </p>
+          <div class="service-pill-bar">
+            <a href="#service-websites" class="service-pill-link">01. Website Design</a>
+            <a href="#service-branding" class="service-pill-link">02. Branding &amp; Logos</a>
+            <a href="#service-social" class="service-pill-link">03. Social Media</a>
+            <a href="#service-production" class="service-pill-link">04. Photo &amp; Video</a>
+            <a href="#service-marketing" class="service-pill-link">05. Digital Marketing</a>
+            <a href="#service-business-web" class="service-pill-link">06. Business Websites</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 Alternating Service Blocks with Sticky Side Navigation -->
+    <section class="section">
+      <div class="container">
+        <div class="services-with-sidebar">
+          <aside class="services-sticky-nav" aria-label="Services Jump Navigation">
+            <div class="services-sticky-title">Jump to Service</div>
+            <a href="#service-websites" class="sticky-service-link active"><span class="num">01</span> <span>Website Design</span></a>
+            <a href="#service-branding" class="sticky-service-link"><span class="num">02</span> <span>Branding &amp; Logos</span></a>
+            <a href="#service-social" class="sticky-service-link"><span class="num">03</span> <span>Social Media</span></a>
+            <a href="#service-production" class="sticky-service-link"><span class="num">04</span> <span>Photo &amp; Video</span></a>
+            <a href="#service-marketing" class="sticky-service-link"><span class="num">05</span> <span>Digital Marketing</span></a>
+            <a href="#service-business-web" class="sticky-service-link"><span class="num">06</span> <span>Business Websites</span></a>
+          </aside>
+
+          <div class="services-chapters-col">
+            <!-- 01. Website Design -->
+            <article class="service-detail-block" id="service-websites" data-reveal="left">
+              <div>
+                <span class="eyebrow">01 • Website Design</span>
+                <h2 class="display-md" style="margin-bottom:0.75rem;">Fast, Mobile-First Websites That Turn Visitors Into Enquiries</h2>
+                <p class="body-md">
+                  We design modern, easy-to-navigate websites for hotels, Ayurvedic resorts, restaurants, and local businesses that look great on every phone and make contacting you effortless.
+                </p>
+                <div class="checklist-grid">
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Custom responsive layout tailored to your brand story</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>One-tap WhatsApp chat, call buttons &amp; inquiry forms</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Fast loading speeds and clean Google SEO structure</span></div>
+                </div>
+                <a href="contact.html" class="btn btn-primary"><span>Request Website Quote</span> <span class="btn-arrow">→</span></a>
+              </div>
+              <div class="service-detail-photo">
+                <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=85" alt="Website design preview" loading="lazy" />
+              </div>
+            </article>
+
+            <!-- 02. Branding & Logos -->
+            <article class="service-detail-block reverse" id="service-branding" data-reveal="right">
+              <div>
+                <span class="eyebrow">02 • Branding &amp; Logos</span>
+                <h2 class="display-md" style="margin-bottom:0.75rem;">Memorable Logos, Menus, Packaging &amp; Signage</h2>
+                <p class="body-md">
+                  Whether you are launching a new food brand, refreshing a cafe menu in Kazhakkoottam, or opening a showroom, we build visual identities customers remember and trust.
+                </p>
+                <div class="checklist-grid">
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Primary logo mark, monogram, colour system &amp; font pairing</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Dine-in menus, takeaway boxes, pouches, bags &amp; labels</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Storefront signboards, staff uniforms &amp; stationery</span></div>
+                </div>
+                <a href="contact.html" class="btn btn-primary"><span>Start Your Brand Identity</span> <span class="btn-arrow">→</span></a>
+              </div>
+              <div class="service-detail-photo">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1000&q=85" alt="Branding and packaging design" loading="lazy" />
+              </div>
+            </article>
+
+            <!-- 03. Social Media -->
+            <article class="service-detail-block" id="service-social" data-reveal="left">
+              <div>
+                <span class="eyebrow">03 • Social Media</span>
+                <h2 class="display-md" style="margin-bottom:0.75rem;">Scroll-Stopping Reels, Stories &amp; Festive Campaigns</h2>
+                <p class="body-md">
+                  Stay active and relevant on Instagram, Facebook, and YouTube Shorts with planned monthly calendars, vertical Reels, and festive campaigns for Onam, Vishu, and Christmas.
+                </p>
+                <div class="checklist-grid">
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Monthly content calendar &amp; creative graphic posts</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>High-energy Instagram Reels scripted and edited by our team</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Festive launch campaigns &amp; community management</span></div>
+                </div>
+                <a href="contact.html" class="btn btn-primary"><span>Plan Your Social Media</span> <span class="btn-arrow">→</span></a>
+              </div>
+              <div class="service-detail-photo">
+                <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1000&q=85" alt="Social media and Reels" loading="lazy" />
+              </div>
+            </article>
+
+            <!-- 04. Photo & Video -->
+            <article class="service-detail-block reverse" id="service-production" data-reveal="right">
+              <div>
+                <span class="eyebrow">04 • Photo &amp; Video</span>
+                <h2 class="display-md" style="margin-bottom:0.75rem;">On-Location Food, Resort, Fitness &amp; Product Shoots</h2>
+                <p class="body-md">
+                  Our Trivandrum photography and video crew travels directly to your resort in Kovalam, cafe, gym, or campus to capture authentic visuals that set you apart.
+                </p>
+                <div class="checklist-grid">
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Styled food &amp; beverage photography for menus and delivery</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Resort rooms, Ayurvedic spa, pool &amp; drone aerial films</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Gym, academy, and retail walkthrough videos</span></div>
+                </div>
+                <a href="contact.html" class="btn btn-primary"><span>Book a Production Shoot</span> <span class="btn-arrow">→</span></a>
+              </div>
+              <div class="service-detail-photo">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=85" alt="Photo and video shoot" loading="lazy" />
+              </div>
+            </article>
+
+            <!-- 05. Digital Marketing -->
+            <article class="service-detail-block" id="service-marketing" data-reveal="left">
+              <div>
+                <span class="eyebrow">05 • Digital Marketing</span>
+                <h2 class="display-md" style="margin-bottom:0.75rem;">Google Maps SEO &amp; Targeted Local Lead Campaigns</h2>
+                <p class="body-md">
+                  Make sure customers nearby find your business first when searching on Google Maps, Google Search, and Instagram — driving real phone calls and direction clicks.
+                </p>
+                <div class="checklist-grid">
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Google Business Profile setup &amp; local ranking optimization</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Hyper-targeted Instagram, Facebook &amp; Google Search ads</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Clear monthly performance summaries with zero jargon</span></div>
+                </div>
+                <a href="contact.html" class="btn btn-primary"><span>Grow Local Visibility</span> <span class="btn-arrow">→</span></a>
+              </div>
+              <div class="service-detail-photo">
+                <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?auto=format&fit=crop&w=1000&q=85" alt="Digital marketing and local search" loading="lazy" />
+              </div>
+            </article>
+
+            <!-- 06. Business Websites -->
+            <article class="service-detail-block reverse" id="service-business-web" data-reveal="right">
+              <div>
+                <span class="eyebrow">06 • Business Websites</span>
+                <h2 class="display-md" style="margin-bottom:0.75rem;">Booking Portals, Study-Abroad Funnels &amp; WhatsApp Catalogues</h2>
+                <p class="body-md">
+                  For academies, consultancies, clinics, and hospitality brands that need course listings, appointment scheduling, or structured inquiry workflows.
+                </p>
+                <div class="checklist-grid">
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Course &amp; country directories for training and study-abroad brands</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Room, spa, table, and consultation booking forms</span></div>
+                  <div class="checklist-item"><span class="tick-circle">✓</span> <span>Easy-to-update content management and staff training</span></div>
+                </div>
+                <a href="contact.html" class="btn btn-primary"><span>Discuss Your Business Website</span> <span class="btn-arrow">→</span></a>
+              </div>
+              <div class="service-detail-photo">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1000&q=85" alt="Business website systems" loading="lazy" />
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing CTA Band -->
+    <section class="cta-banner-section">
+      <div class="cta-banner-card" data-reveal="zoom">
+        <div class="cta-banner-content">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> <span>Custom Packages Available</span></span>
+          <h2 class="display-xl">Not sure which service to <span class="theme-shimmer">start with?</span></h2>
+          <p>Let's have a quick 30-minute conversation about your goals and recommend the right plan.</p>
+          <a href="contact.html" class="btn btn-accent"><span>Get free consultation</span> <span class="btn-arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo-link">
+            <span class="logo-white-chip"><img src="logo.png" alt="Explore Wings Logo" /></span>
+            <span class="brand-logo-text">
+              <span class="brand-logo-title" style="color:#FFFFFF;">Explore Wings</span>
+              <span class="brand-logo-sub" style="color:var(--theme-accent);">Digital Technologies</span>
+            </span>
+          </a>
+          <p>Helping businesses in Trivandrum, Kerala and beyond launch and grow their brand online.</p>
+        </div>
+        <div class="footer-col">
+          <h5>Services</h5>
+          <ul>
+            <li><a href="#service-websites">Website Design</a></li>
+            <li><a href="#service-branding">Branding &amp; Logos</a></li>
+            <li><a href="#service-social">Social Media</a></li>
+            <li><a href="#service-production">Photo &amp; Video</a></li>
+            <li><a href="#service-marketing">Digital Marketing</a></li>
+            <li><a href="#service-business-web">Business Websites</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Clients</h5>
+          <ul>
+            <li><a href="portfolio.html">Aadisaktthi Resorts &amp; Spa</a></li>
+            <li><a href="portfolio.html">Terrace by Makkawao</a></li>
+            <li><a href="portfolio.html">Transorze &amp; Edustudy</a></li>
+            <li><a href="portfolio.html">Global Fitness &amp; Elaf</a></li>
+            <li><a href="portfolio.html">LuLu &amp; Munch</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h5>Trivandrum HQ</h5>
+          <p>Thiruvananthapuram, Kerala, India [Placeholder]</p>
+          <p style="margin-top:0.4rem;"><strong style="color:var(--theme-accent);">Phone:</strong> +91 90000 00000 [Placeholder]</p>
+          <p><strong style="color:var(--theme-accent);">Email:</strong> hello@explorewings.in [Placeholder]</p>
+        </div>
+      </div>
+      <div class="footer-giant-watermark" aria-hidden="true">EXPLORE WINGS</div>
+      <div class="footer-bottom">
+        <span>© 2026 Explore Wings Digital Technologies • Trivandrum, Kerala.</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/919000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.257.59 4.46 1.71 6.404L3.2 28.8l6.565-1.693a12.74 12.74 0 0 0 6.239 1.627h.005c7.068 0 12.796-5.73 12.796-12.8 0-3.42-1.332-6.635-3.75-9.052A12.716 12.716 0 0 0 16.004 3.2z"/></svg>
+    <span class="whatsapp-tooltip">Chat With Us on WhatsApp</span>
+  </a>
+  <button type="button" class="back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="chatbot.js" defer></script>
+</body>
+</html>
